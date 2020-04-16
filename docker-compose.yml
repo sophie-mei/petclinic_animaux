@@ -2,7 +2,7 @@
 
 version: "3.4"
 
-ervices:
+services:
   petclinic:
     image: image-petclinic
     build: 

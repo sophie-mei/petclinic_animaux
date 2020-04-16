@@ -57,7 +57,7 @@ jobs:
     - run: |
         docker build ./tomcat_petclinic  #-t ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic:${{ github.sha }}
   #      #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
-        docker push petclinicfitec.azurecr.io#${{ env.REGISTRY_NAME }}.azurecr.io #/sophie/petclinic:${{ github.sha }}
+        docker push sophie/petclinic#${{ env.REGISTRY_NAME }}.azurecr.io #/sophie/petclinic:${{ github.sha }}
     # Set the target Azure Kubernetes Service (AKS) cluster. 
    # - uses: azure/aks-set-context@v1
     #  with:

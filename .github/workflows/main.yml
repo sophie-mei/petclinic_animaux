@@ -54,16 +54,16 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
     # Container build and push to a Azure Container Registry (ACR)
-    - run: |
-        docker build ./tomcat_petclinic -t ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic:${{ github.sha }}
-        #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
-        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic:${{ github.sha }}
+#    - run: |
+ #       docker build ./tomcat_petclinic -t ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic:${{ github.sha }}
+  #      #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
+   #     docker push ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic:${{ github.sha }}
     # Set the target Azure Kubernetes Service (AKS) cluster. 
-    - uses: azure/aks-set-context@v1
-      with:
-        creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: ${{ env.CLUSTER_NAME }}
-        resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+   # - uses: azure/aks-set-context@v1
+    #  with:
+     #   creds: '${{ secrets.AZURE_CREDENTIALS }}'
+      #  cluster-name: ${{ env.CLUSTER_NAME }}
+       # resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
 
     # Create namespace if doesn't exist
    # - run: |

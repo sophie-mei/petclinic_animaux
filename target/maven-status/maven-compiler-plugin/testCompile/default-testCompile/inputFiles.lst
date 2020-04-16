@@ -1,0 +1,11 @@
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/web/VisitControllerTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/web/CrashControllerTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceSpringDataJpaTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/web/OwnerControllerTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceJpaTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/web/VetControllerTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/web/PetControllerTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceJdbcTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/web/PetTypeFormatterTests.java
+/home/ivan/devops/projet/spring-petclinic-fitec2020/src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java

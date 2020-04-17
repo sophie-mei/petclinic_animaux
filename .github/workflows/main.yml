@@ -55,37 +55,37 @@ jobs:
     
     # Container build and push to a Azure Container Registry (ACR)
     - run: |
-        docker build ./tomcat_petclinic  #-t ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic123:${{ github.sha }}
+        docker build ./tomcat_petclinic -t ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic123:${{ github.sha }}
   #      #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
-        docker  publish sophie/petclinic #${{ env.REGISTRY_NAME }}.azurecr.io #/sophie/petclinic123:${{ github.sha }}
+        docker push  ${{ env.REGISTRY_NAME }}.azurecr.io /sophie/petclinic123:${{ github.sha }}
     # Set the target Azure Kubernetes Service (AKS) cluster. 
-   # - uses: azure/aks-set-context@v1
-    #  with:
-     #   creds: '${{ secrets.AZURE_CREDENTIALS }}'
-      #  cluster-name: ${{ env.CLUSTER_NAME }}
-       # resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+    - uses: azure/aks-set-context@v1
+      with:
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
+        cluster-name: ${{ env.CLUSTER_NAME }}
+        resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
 
     # Create namespace if doesn't exist
-   # - run: |
-       # kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+    - run: |
+        kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
     # Create imagepullsecret for Azure Container registry (ACR)
-   # - uses: azure/k8s-create-secret@v1
-    #  with:
-     #   container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
-      #  container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
-       # container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-        #secret-name: ${{ env.REGISTRY_NAME }}-registry-connection
-       # namespace: ${{ env.NAMESPACE }}
+    - uses: azure/k8s-create-secret@v1
+      with:
+        container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
+        container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+        container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+        secret-name: ${{ env.REGISTRY_NAME }}-registry-connection
+        namespace: ${{ env.NAMESPACE }}
 
     # Deploy app to AKS
-   # - uses: azure/k8s-deploy@v1
-    #  with:
-     #   manifests: |
-      #    manifests/petclinic-deployment.yaml
-       #   manifests/petclinic-service.yaml
-       # images: |
-        #  ${{ env.REGISTRY_NAME }}.azurecr.io/it-sz-petclinic:${{ github.sha }}
-       # imagepullsecrets: |
-        #  ${{ env.REGISTRY_NAME }}-registry-connection
-       # namespace: ${{ env.NAMESPACE }}
+    - uses: azure/k8s-deploy@v1
+      with:
+        manifests: |
+          manifests/petclinic-deployment.yaml
+          manifests/petclinic-service.yaml
+        images: |
+          ${{ env.REGISTRY_NAME }}.azurecr.io/sophie/petclinic123:${{ github.sha }}
+        imagepullsecrets: |
+          ${{ env.REGISTRY_NAME }}-registry-connection
+        namespace: ${{ env.NAMESPACE }}
 

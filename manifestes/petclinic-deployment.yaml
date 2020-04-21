@@ -16,15 +16,15 @@ spec:
         app: petclinic
     spec:
       containers:
-        #- image: ivantou/petclinic 
-        - image: aimedevops.azurecr.io/sophie/petclinic123:latest
-          #imagePullPolicy: Always
+        #- image: sophie/petclinic 
+        - image: mycontainerregistrypetclinic.azurecr.io/sz:latest 
+          imagePullPolicy: Always
           name: petclinic
           ports:
             - containerPort: 8080
           resources:
             requests:
-              cpu: 250m
+              cpu: 350m
             limits:
               cpu: 800m
       restartPolicy: Always

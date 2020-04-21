@@ -83,8 +83,9 @@ jobs:
         manifests: |
           manifests/petclinic-deployment.yaml
           manifests/petclinic-service.yaml
+         # mycontainerregistrypetclinic.azurecr.io/sz
         images: |
-          ${{ env.REGISTRY_NAME }}.azurecr.io/aimedevops:${{ github.sha }}
+          ${{ env.REGISTRY_NAME }}.azurecr.io/sz:${{ github.sha }}
         imagepullsecrets: |
           ${{ env.REGISTRY_NAME }}-registry-connection
         namespace: ${{ env.NAMESPACE }}

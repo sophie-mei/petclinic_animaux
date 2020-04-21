@@ -56,7 +56,7 @@ jobs:
     # Container build and push to a Azure Container Registry (ACR)
     - run: |
         docker build ./tomcat_petclinic -t ${{ env.REGISTRY_NAME }}/sz:${{ github.sha }}
-  #      #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
+        #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
         docker push ${{ env.REGISTRY_NAME }}/sz:${{ github.sha }}
     # Set the target Azure Kubernetes Service (AKS) cluster. 
     - uses: azure/aks-set-context@v1
@@ -83,6 +83,7 @@ jobs:
         manifests: |
           manifests/petclinic-deployment.yaml
           manifests/petclinic-service.yaml
+         # mycontainerregistrypetclinic.azurecr.io/sz
         images: |
           ${{ env.REGISTRY_NAME }}.azurecr.io/sz:${{ github.sha }}
         imagepullsecrets: |

@@ -12,8 +12,8 @@ on:
     branches: [ sophie ]
 # Environment variables available to all jobs and steps in this workflow
 env:
-  REGISTRY_NAME: sisisi
-  CLUSTER_NAME: myAKSCluster123
+  REGISTRY_NAME: mycontainerregistrypetclinic.azurecr.io
+  CLUSTER_NAME: myAKSClustersz
   CLUSTER_RESOURCE_GROUP: myResourceGroup
   NAMESPACE: test
 jobs:
@@ -56,7 +56,7 @@ jobs:
     # Container build and push to a Azure Container Registry (ACR)
     - run: |
         docker build ./tomcat_petclinic -t ${{ env.REGISTRY_NAME }}/sz:${{ github.sha }}
-  #      #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
+        #docker tag pcacr.azurecr.io/it-sz-petclinic pcacr.azurecr.io/it-sz-petclinic:dev
         docker push ${{ env.REGISTRY_NAME }}/sz:${{ github.sha }}
     # Set the target Azure Kubernetes Service (AKS) cluster. 
     - uses: azure/aks-set-context@v1
